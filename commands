@@ -1,0 +1,38 @@
+curl -X GET http://localhost:3000/generateToken
+
+curl -X POST -H "Content-Type: application/json" -d '{
+  "name": "John Doe",
+  "age": 30,
+  "gender": "Male"
+}' http://localhost:3000/persons
+
+
+
+autocannon -c 10 -m 'POST' -b '{"name": "John Doe","age": 30,"gender": "Male"}' -H 'Content-Type=application/json' http://localhost:3000/persons
+
+ autocannon -c 10 -m 'POST' -b '{"name": "John Doe","age": 30,"gender": "Male"}' -H 'Content-Type=application/json' -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyMywiaWF0IjoxNzA3NzY3NjYwfQ.dX9hPLmOk5kjWIuOXVbR9AlEbdEOoqX-mo0qtrdDRZ4" http://localhost:3000/persons
+
+curl -X POST -H "Content-Type: application/json" -d '{
+  "name": "John Doe",
+  "age": 30,
+  "gender": "Male"
+}' http://localhost:3000/persons
+
+
+curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyMywiaWF0IjoxNzA4MDI2NDAxfQ.93o_ioLRHGjTkQvNZXmjpX0nzP0cvcTPOQf37g97eKA" -d '{
+  "name": "John Doe",
+  "age": 30,
+  "gender": "Male"
+}' http://localhost:3000/persons
+
+
+curl -X GET 'http://localhost:3000/persons?gender=Male'
+autocannon -c 10 -H 'Content-Type=application/json' 'http://localhost:3000/persons?gender=Male'
+
+
+curl -X GET http://localhost:3000/api/
+
+autocannon -c 10 http://localhost:3000/api/
+
+
+

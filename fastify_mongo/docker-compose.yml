@@ -1,0 +1,13 @@
+version: '3'
+services:
+  mongodb:
+    image: mongo:4.4
+    container_name: my-mongodb
+    ports:
+      - "27017:27017"  # Expose MongoDB's default port (27017) to the host
+    volumes:
+      - ./data:/data/db  # Mount a volume to persist MongoDB data
+
+networks:
+  default:
+    driver: bridge
